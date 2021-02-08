@@ -35,7 +35,7 @@
     </style>
     <title>EW Leadership Report</title>
   </head>
-<body onresize="location.reload();" id="main_container">
+<body onresize="location.reload();">
   <div class="section section--white">
     <div class="container">
       <div class="section_body" style="font-size: 1.2em; padding-left: 0%; padding-right: 0%;">
@@ -1176,24 +1176,6 @@
 
     d3.select("#selected_goal_compare_chart").text(choice.goal)
   }
-</script>
-  
-<!-- for dynamic iframe -->
-<script type="text/javascript">
-const sendPostMessage = () => {
-  if (height !== document.getElementById('main_container').offsetHeight) {
-    height = document.getElementById('main_container').offsetHeight;
-    window.parent.postMessage({
-      frameHeight: height
-    }, '*');
-    // console.log(height);
-  }
-}
-
-window.onload = () => sendPostMessage();
-window.onresize = () => sendPostMessage();
-document.getElementById('quick-summary').onclick = () => sendPostMessage();
-document.getElementById('methodology').onclick = () => sendPostMessage();
 </script>
 
 </body>
