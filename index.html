@@ -38,7 +38,7 @@
 <body onresize="location.reload();">
   <div class="section section--white">
     <div class="container">
-      <div class="section_body" style="font-size: 1.2em; padding-left: 0%; padding-right: 0%;">
+      <div class="section_body" style="font-size: 1.2em; padding-left: 0%; padding-right: 0%;" id="main_containter">
 
 <h1><strong>Leader Perceptions of L&amp;D</strong></h1>
 <div style="text-align: right;"><p>Emerald Works survey report, February 2021</p></div>
@@ -1181,8 +1181,8 @@
 <!-- for dynamic iframe -->
 <script type="text/javascript">
 const sendPostMessage = () => {
-  if (height !== document.documentElement.scrollHeight) {
-    height = document.document.documentElement.scrollHeight;
+  if (height !== document.getElementById('main_container').offsetHeight) {
+    height = document.getElementById('main_container').offsetHeight;
     window.parent.postMessage({
       frameHeight: height
     }, '*');
