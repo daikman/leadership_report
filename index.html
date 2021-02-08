@@ -35,7 +35,7 @@
     </style>
     <title>EW Leadership Report</title>
   </head>
-<body onresize="location.reload();">
+<body onresize="location.reload();" id="main_container">
   <div class="section section--white">
     <div class="container">
       <div class="section_body" style="font-size: 1.2em; padding-left: 0%; padding-right: 0%;">
@@ -50,9 +50,10 @@
 </div>
 
 <br>
-<div class="banner">
-  <h2>Quick summary</h2>
-  <br>
+<div class="banner" id="quick-summary">
+  <div style="font-size:0.8em">
+    <h2>Quick summary</h2>
+    <br>
     <h3>Business leaders’ top priorities for L&amp;D</h3>
     <ul>
       <li>.    Ensuring high quality work</li>
@@ -86,6 +87,7 @@
       <li>·    Using both of the above makes company leaders <em>12 times</em> more likely to understand how investment in learning adds value to their business</li>
       <li>·    Only 22% of L&amp;D functions in 2020 had data-analysis skills in-house</li>
     </ul>
+  </div>
 </div>
 <hr>
 
@@ -213,7 +215,8 @@
   <svg id="compare_chart"></svg>
   <div style="padding-left: 1%; padding-bottom: 1%; font-size: 0.8em">
     <p><strong>How to use</strong>: click on a priority area in the left-hand column. The rest of the chart will update to show you how leaders and L&amp;D professionals rank this priority, and the L&amp;D success in this area.
-    <br><strong style="font-size: 1.2em">*</strong>Percentage of success refers to the proportion of L&D professionals who said their department have made successful contributions to the selected priority.
+    <br><strongstyle="font-size: 1.2em">*</strong>This rank is based on how often each goal was selected as a top 5 priority - 1st = most often.
+    <br><strong style="font-size: 1.2em">&#8224;</strong>Percentage of success refers to the proportion of L&D professionals who said their department have made successful contributions to the selected priority.
       "2021 average" refers to all data from <em>2020</em>, establishing a benchmark for 2021.
       "Top performers" refers to the most well developed departments of 2020, considering a wide range of factors.</p>
   </div>
@@ -280,6 +283,7 @@
 <h3>Here's how we arrived at the insights presented in this report.</h3>
 <br>
 <div class="banner" id="methodology">
+  <div style="font-size:0.8em">
     <h2>Methodology</h2>
     <br>
     <h3><strong>The data</strong></h3>
@@ -292,6 +296,7 @@
     <p>·    <strong>Decision trees</strong>: this is a machine learning technique that (among other things) identifies which variables are most useful for predicting a specified variable. For example, below we try to find what best predicts a leader&#39;s appreciation of L&amp;D value. The most important predictor turned out to be the use of data analytics. In other words, if you had to use only one thing from our dataset to guess a leader&#39;s understanding of L&amp;D value, you should look at their L&amp;D department&#39;s use of data.</p>
     <p>·    <strong>Logistic regression</strong>: this technique allows for the calculation of probabilities associated with changes in specified variables. Given that the use of data analysis is a strong predictor of leaders&#39; appreciation of L&amp;D, applying logistic regression allows one to express this relationship in probabilistic terms, e.g., &quot;leaders are <em>X times</em> as likely to appreciate L&amp;D value if they use data analytics&quot;. Essentially, this technique was used to better communicate what was found using the decision trees, the results of which cannot be as easily expressed in practical terms. </p>
     <p>These techniques allowed for an in-depth exploration of the data, revealing actionable insights for L&amp;D professionals. </p>
+  </div>
 </div>
 <hr>
 
@@ -989,57 +994,77 @@
                 .attr("x", 0.07*width)
                 .attr("font-weight", "bold")
                 .attr("font-size", 24)
-                .text("Priority rank")
+                .text("Priority rank*")
   // ranks
   goal_ranks_svg.append("text")
                 .attr("id", "leader_rank_text")
-                .attr("x", 0.15*width)
-                .attr("y", margin.top + 75)
-                .attr("font-size", 36)
+                .attr("x", 0.12*width)
+                .attr("y", margin.top + height/2)
+                .attr("font-size", 54)
                 .text(user_choice.leader)
                 .attr("fill", "#31ab91")
+  // line surround
+  goal_ranks_svg.append("line")
+                 .attr("x1", 0.07*width)
+                 .attr("x2", 0.3*width)
+                 .attr("y1", margin.top + height/1.85)
+                 .attr("y2", margin.top + height/1.85)
+                 .attr("stroke","black")
+  goal_ranks_svg.append("line")
+                .attr("x1", 0.07*width)
+                .attr("x2", 0.3*width)
+                .attr("y1", margin.top + height/3.2)
+                .attr("y2", margin.top + height/3.2)
+                .attr("stroke","black")
 
-  goal_ranks_svg.append("text")
-                .attr("id", "ld_rank_text")
-                .attr("x", 0.15*width)
-                .attr("y", margin.top + 160)
-                .attr("font-size", 36)
-                .text(user_choice.ld_rank)
-                .attr("fill", "#31ab91")
+  // goal_ranks_svg.append("circle")
+  //               .attr("cx", 0.18*width)
+  //               .attr("cy", margin.top + height/2.25)
+  //               .attr("r", 84)
+  //               .attr("fill", "none")
+  //               .attr("stroke", "black")
+
+  // goal_ranks_svg.append("text")
+  //               .attr("id", "ld_rank_text")
+  //               .attr("x", 0.15*width)
+  //               .attr("y", margin.top + 160)
+  //               .attr("font-size", 36)
+  //               .text(user_choice.ld_rank)
+  //               .attr("fill", "#31ab91")
 
   // titles
-  goal_ranks_svg.append("text")
-                .attr("x", 0.07*width)
-                .attr("y", margin.top + 35)
-                //.attr("font-weight", "bold")
-                .attr("font-size", 24)
-                .text("Leader")
-  goal_ranks_svg.append("line")
-                .attr("x1", 0.07*width)
-                .attr("y1", margin.top + 37)
-                .attr("x2", 0.17*width)
-                .attr("y2", margin.top + 37)
-                .attr("stroke", "black")
-
-  goal_ranks_svg.append("text")
-                .attr("x", 0.07*width)
-                .attr("y", margin.top + 120)
-                //.attr("font-weight", "bold")
-                .attr("font-size", 24)
-                .text("L&D")
-  goal_ranks_svg.append("line")
-                .attr("x1", 0.07*width)
-                .attr("y1", margin.top + 122)
-                .attr("x2", 0.17*width)
-                .attr("y2", margin.top + 122)
-                .attr("stroke", "black")
+  // goal_ranks_svg.append("text")
+  //               .attr("x", 0.07*width)
+  //               .attr("y", margin.top + 35)
+  //               //.attr("font-weight", "bold")
+  //               .attr("font-size", 24)
+  //               .text("Leader")
+  // goal_ranks_svg.append("line")
+  //               .attr("x1", 0.07*width)
+  //               .attr("y1", margin.top + 37)
+  //               .attr("x2", 0.17*width)
+  //               .attr("y2", margin.top + 37)
+  //               .attr("stroke", "black")
+  //
+  // goal_ranks_svg.append("text")
+  //               .attr("x", 0.07*width)
+  //               .attr("y", margin.top + 120)
+  //               //.attr("font-weight", "bold")
+  //               .attr("font-size", 24)
+  //               .text("L&D")
+  // goal_ranks_svg.append("line")
+  //               .attr("x1", 0.07*width)
+  //               .attr("y1", margin.top + 122)
+  //               .attr("x2", 0.17*width)
+  //               .attr("y2", margin.top + 122)
+  //               .attr("stroke", "black")
 
 
   // PERCENTAGES
   const perc = compare_svg.append("g")
                           .attr("transform", "translate(" + (2*width/2.7 + 10) + "," + margin.top + ")")
   perc.append("text")
-      .text("Percentage of L&D success*")
+      .html("Percentage of L&D success&#8224;")
       .attr("font-weight", "bold")
       .attr("font-size", 24)
       .attr("y", 20)
@@ -1144,7 +1169,7 @@
   // FUNCTION
   const set_new_rank_data = function(choice) {
     d3.select(leader_rank_text).text(choice.leader)
-    d3.select(ld_rank_text).text(choice.ld_rank)
+    //d3.select(ld_rank_text).text(choice.ld_rank)
 
     d3.select("#fill_rect_avg").transition("fill_up_rect_avg").duration(1000).attr("width", choice.ld_ach*1.5)
     d3.select("#tween_percent_avg").transition()
