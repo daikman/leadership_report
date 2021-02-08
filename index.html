@@ -1177,6 +1177,24 @@
     d3.select("#selected_goal_compare_chart").text(choice.goal)
   }
 </script>
+  
+<!-- for dynamic iframe -->
+<script type="text/javascript">
+const sendPostMessage = () => {
+  if (height !== document.getElementById('container').offsetHeight) {
+    height = document.getElementById('container').offsetHeight;
+    window.parent.postMessage({
+      frameHeight: height
+    }, '*');
+    console.log(height);
+  }
+}
+
+window.onload = () => sendPostMessage();
+window.onresize = () => sendPostMessage();
+document.getElementById('quick-summary').onclick = () => sendPostMessage();
+document.getElementById('methodology').onclick = () => sendPostMessage();
+</script>
 
 </body>
 </html>
