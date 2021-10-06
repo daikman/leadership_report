@@ -1,6 +1,6 @@
 # Data visualisations for a report
 
-For my job, I wrote a report based on a survey sent to leaders of various companies. 
+For my old job at Emerald Works, I wrote a report based on a survey sent to leaders of various companies. 
 
 This is the source for the visualisations I made using `D3.js`. See and interect with them here: https://daikman.github.io/leadership_report
 
