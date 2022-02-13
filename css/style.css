@@ -1,0 +1,50 @@
+body {
+  padding: 5%;
+}
+
+.intro {
+  margin-left: 16px;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 770px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.intro a {
+  text-decoration: none;
+  color: rgba(100, 100, 255);
+  font-weight: bold;
+}
+
+.footnotes-area {
+  font-size: 0.8em;
+  padding-left: 2%;
+}
+
+.md-footnote {
+  background-color: #f0f0f0;
+  padding: 2px;
+  border-radius: 10px;
+  font-size: 0.7em;
+}
+
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: inset;
+  border-width: 1px;
+}
+
+details {
+  font-size: 0.9em;
+}
+
+.box-banner-wrapper {
+  padding-left: 15%;
+  padding-right: 15%;
+  font-size: 0.9em;
+}
